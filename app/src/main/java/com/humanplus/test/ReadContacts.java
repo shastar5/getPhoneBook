@@ -113,8 +113,15 @@ public class ReadContacts {
             );
 
             while (clsPhoneCursor.moveToNext()) {
-                phoneBook[index].setDigit(clsPhoneCursor.getString(0));
-                Log.i("ACT: ", "phone number: " + phoneBook[index++].getDigit());
+                if(clsPhoneCursor.isLast()) {
+                    phoneBook[index].setDigit(clsPhoneCursor.getString(0));
+                    Log.i("ACT: ", "phone number: " + phoneBook[index++].getDigit());
+                } else {
+                    phoneBook[index+1] = new PhoneBook();
+                    phoneBook[index].setName(clsCursor.getString(1));
+                    phoneBook[index].setDigit(clsPhoneCursor.getString(0));
+                    Log.i("ACT: ", "phone number: " + phoneBook[index++].getDigit());
+                }
             }
             clsPhoneCursor.close();
         }

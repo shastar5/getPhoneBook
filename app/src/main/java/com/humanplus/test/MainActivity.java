@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
-            Bitmap bitmap2 = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
+            bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
         } catch(Exception e) {
             Log.i("FacebookSdk Error: ", e.getMessage().toString());
         }
